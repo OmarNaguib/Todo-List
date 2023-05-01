@@ -5,7 +5,6 @@ import {
   addProject,
   removeProject,
   getAllTodos,
-  getProjectTodos,
 } from "./structure";
 import "./style.css";
 
@@ -29,16 +28,16 @@ const input2 = {
 
 addProject("second");
 projects[0].addTodo(input);
-projects[0].addTodo(input);
+projects[0].addTodo(input2);
 projects[0].addTodo(input);
 console.log("projects[0]", projects[0]);
 
 addProject("first");
-projects[1].addTodo(input);
+projects[1].addTodo(input2);
 projects[1].addTodo(input);
 projects[1].addTodo(input);
 // projects[0].editTodo(0, input2);
 // console.log("projects[0]", projects[0]);
 console.log(getAllTodos());
-console.log(getProjectTodos(0));
-console.log(getProjectTodos(1));
+console.log(projects[0].getProjectTodos());
+console.log(projects[1].getProjectTodos());

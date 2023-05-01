@@ -20,12 +20,16 @@ function projectFactory(projectName) {
   function editTodo(index, newValues) {
     todos[index] = todoFactory(newValues);
   }
+  function getProjectTodos() {
+    return todos;
+  }
   return {
     projectName,
     todos,
     addTodo,
     removeTodo,
     editTodo,
+    getProjectTodos,
   };
 }
 function addProject(projectName) {
@@ -47,15 +51,6 @@ function getAllTodos() {
   });
   return allTodos;
 }
-function getProjectTodos(index) {
-  const projectTodos = [];
-  projects[index].todos.forEach((item) => {
-    if (item) {
-      projectTodos.push(item);
-    }
-  });
-  return projectTodos;
-}
 
 export {
   projects,
@@ -64,5 +59,14 @@ export {
   addProject,
   removeProject,
   getAllTodos,
-  getProjectTodos,
 };
+
+// function getProjectTodos(index) {
+//   const projectTodos = [];
+//   projects[index].todos.forEach((item) => {
+//     if (item) {
+//       projectTodos.push(item);
+//     }
+//   });
+//   return projectTodos;
+// }
