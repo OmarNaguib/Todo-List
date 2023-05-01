@@ -6,6 +6,7 @@ import {
   removeProject,
   getAllTodos,
   getProjectNames,
+  countProjects,
 } from "./structure";
 
 import displayProjects from "./interface";
@@ -46,7 +47,12 @@ console.log(projects[0].getProjectTodos());
 console.log(projects[1].getProjectTodos());
 
 console.log(getProjectNames());
+console.log(countProjects());
 
+removeProject(0);
+removeProject(1);
+removeProject(2);
+console.log(countProjects());
 // beggining of real logic
 
 displayProjects(getProjectNames());

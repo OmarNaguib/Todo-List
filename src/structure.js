@@ -1,18 +1,21 @@
 const projects = [];
 
-function todoFactory({ title, description, dueDate, priority }) {
+function todoFactory({ title, description, dueDate, priority, projectIndex }) {
+  const done = false;
   return {
     title,
     description,
     dueDate,
     priority,
+    done,
+    projectIndex,
   };
 }
 
-function projectFactory(projectName) {
+function projectFactory(projectName, projectIndex) {
   const todos = [];
   function addTodo(values) {
-    todos.push(todoFactory(values));
+    todos.push(todoFactory({ ...values, projectIndex }));
   }
   function removeTodo(index) {
     delete todos[index];
@@ -25,6 +28,7 @@ function projectFactory(projectName) {
   }
   return {
     projectName,
+    projectIndex,
     todos,
     addTodo,
     removeTodo,
@@ -33,11 +37,15 @@ function projectFactory(projectName) {
   };
 }
 function addProject(projectName) {
-  projects.push(projectFactory(projectName));
+  projects.push(projectFactory(projectName, projects.length));
 }
 
+const countProjects = function countNonEmptyProjects() {
+  return projects.filter((project) => !!project).length;
+};
+
 function removeProject(projectIndex) {
-  delete projects[projectIndex];
+  if (countProjects() >= 2) delete projects[projectIndex];
 }
 
 function getProjectNames() {
@@ -55,6 +63,8 @@ function getAllTodos() {
   });
   return allTodos;
 }
+// add the default project
+addProject("default");
 
 export {
   projects,
@@ -64,6 +74,7 @@ export {
   removeProject,
   getAllTodos,
   getProjectNames,
+  countProjects,
 };
 
 // function getProjectTodos(index) {
