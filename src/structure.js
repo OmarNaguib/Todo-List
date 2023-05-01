@@ -40,6 +40,10 @@ function removeProject(projectIndex) {
   delete projects[projectIndex];
 }
 
+function getProjectNames() {
+  return projects.map((project) => project.projectName);
+}
+
 function getAllTodos() {
   const allTodos = [];
   projects.forEach((project) => {
@@ -59,6 +63,7 @@ export {
   addProject,
   removeProject,
   getAllTodos,
+  getProjectNames,
 };
 
 // function getProjectTodos(index) {

@@ -5,7 +5,10 @@ import {
   addProject,
   removeProject,
   getAllTodos,
+  getProjectNames,
 } from "./structure";
+
+import displayProjects from "./interface";
 import "./style.css";
 
 const main = "here";
@@ -41,3 +44,9 @@ projects[1].addTodo(input);
 console.log(getAllTodos());
 console.log(projects[0].getProjectTodos());
 console.log(projects[1].getProjectTodos());
+
+console.log(getProjectNames());
+
+// beggining of real logic
+
+displayProjects(getProjectNames());
