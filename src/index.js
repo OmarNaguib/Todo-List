@@ -9,7 +9,7 @@ import {
   countProjects,
 } from "./structure";
 
-import displayProjects from "./interface";
+import * as userInterface from "./interface";
 import "./style.css";
 
 const main = "here";
@@ -49,10 +49,11 @@ console.log(projects[1].getProjectTodos());
 console.log(getProjectNames());
 console.log(countProjects());
 
-removeProject(0);
-removeProject(1);
-removeProject(2);
+// removeProject(0);
+// removeProject(1);
+// removeProject(2);
 console.log(countProjects());
 // beggining of real logic
 
-displayProjects(getProjectNames());
+userInterface.displayProjects(getProjectNames());
+userInterface.displayTodos(getAllTodos());

@@ -1,6 +1,13 @@
 const projects = [];
 
-function todoFactory({ title, description, dueDate, priority, projectIndex }) {
+function todoFactory({
+  title,
+  description,
+  dueDate,
+  priority,
+  projectIndex,
+  todoIndex,
+}) {
   const done = false;
   return {
     title,
@@ -9,13 +16,15 @@ function todoFactory({ title, description, dueDate, priority, projectIndex }) {
     priority,
     done,
     projectIndex,
+    todoIndex,
   };
 }
 
 function projectFactory(projectName, projectIndex) {
   const todos = [];
   function addTodo(values) {
-    todos.push(todoFactory({ ...values, projectIndex }));
+    const todoIndex = todos.length;
+    todos.push(todoFactory({ ...values, projectIndex, todoIndex }));
   }
   function removeTodo(index) {
     delete todos[index];
