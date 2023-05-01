@@ -1,4 +1,18 @@
-function showProject(e) {}
+function showProject(e) {
+  const { projectIndex } = e.target.dataset;
+  const allCards = document.querySelectorAll(".card");
+  const projectCards = document.querySelectorAll(
+    `.card[data-project-index="${projectIndex}"]`
+  );
+
+  allCards.forEach((card) => {
+    card.style.display = "none";
+  });
+  projectCards.forEach((card) => {
+    card.style.display = "block";
+  });
+  console.log(projectCards);
+}
 
 export function displayProjects(nameList) {
   const projectNav = document.querySelector(".projects");
