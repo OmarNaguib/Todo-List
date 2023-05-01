@@ -54,6 +54,10 @@ console.log(countProjects());
 // removeProject(2);
 console.log(countProjects());
 // beggining of real logic
-
+const newProjectButton = document.querySelector(".new-project");
+const newProjectForm = document.querySelector(".project-form");
+newProjectButton.addEventListener("click", () => {
+  newProjectForm.classList.toggle("hidden");
+});
 userInterface.displayProjects(getProjectNames());
 userInterface.displayTodos(getAllTodos());
