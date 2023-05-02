@@ -38,3 +38,10 @@ export function displayTodos(todoList) {
     container.appendChild(card);
   });
 }
+
+export function reset() {
+  const projectNav = document.querySelector(".projects");
+  const container = document.querySelector(".todo-container");
+  projectNav.innerHTML = "";
+  container.innerHTML = "";
+}

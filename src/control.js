@@ -20,3 +20,11 @@ export function showProject(e) {
   });
   setCurrentProject(projectIndex);
 }
+
+export function showAll() {
+  const allCards = document.querySelectorAll(".card");
+  allCards.forEach((card) => {
+    card.classList.remove("hidden");
+  });
+  setCurrentProject(-1);
+}

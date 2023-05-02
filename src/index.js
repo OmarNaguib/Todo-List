@@ -56,20 +56,30 @@ console.log(countProjects());
 console.log(countProjects());
 
 // beggining of real logic
+function buildProject() {
+  userInterface.reset();
+  userInterface.displayProjects(getProjectNames(), control.showProject);
+  userInterface.displayTodos(getAllTodos());
+}
+
+const allProjectsButton = document.querySelector(".all-projects");
+allProjectsButton.addEventListener("click", control.showAll);
+
 const newProjectButton = document.querySelector(".new-project");
 const newProjectForm = document.querySelector(".project-form");
 
 newProjectButton.addEventListener("click", () => {
   newProjectForm.classList.toggle("hidden");
 });
-let currentProject = -1;
 
-export function setCurrentProject(projectIndex) {
-  currentProject = projectIndex;
-}
-function buildProject() {
-  userInterface.displayProjects(getProjectNames(), control.showProject);
-  userInterface.displayTodos(getAllTodos());
-}
+newProjectForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const projectName = [...data.entries()][0][1];
+  addProject(projectName);
+  buildProject();
+  newProjectForm.reset();
+  newProjectForm.classList.toggle("hidden");
+});
 
 buildProject();
