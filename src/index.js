@@ -86,4 +86,17 @@ newProjectForm.addEventListener("submit", (e) => {
   newProjectForm.classList.toggle("hidden");
 });
 
+const modal = document.querySelector("#myModal");
+const newTodoButton = document.querySelector(".new-todo");
+const closeModalButton = document.querySelector(".close");
+
+newTodoButton.onclick = () => {
+  modal.style.display = "grid";
+};
+
+window.onclick = (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};
 buildProject();
