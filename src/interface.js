@@ -1,4 +1,4 @@
-function showProject(e) {
+export function showProject(e) {
   const { projectIndex } = e.target.dataset;
   const allCards = document.querySelectorAll(".card");
   const projectCards = document.querySelectorAll(
@@ -14,7 +14,7 @@ function showProject(e) {
   console.log(projectCards);
 }
 
-export function displayProjects(nameList) {
+export function displayProjects(nameList, buttonHandler) {
   const projectNav = document.querySelector(".projects");
   nameList.forEach((name, index) => {
     const listElement = document.createElement("li");
@@ -23,7 +23,7 @@ export function displayProjects(nameList) {
     button.classList.add("project");
     button.textContent = name;
     button.dataset.projectIndex = index;
-    button.addEventListener("click", showProject);
+    button.addEventListener("click", buttonHandler);
     listElement.appendChild(button);
     projectNav.appendChild(listElement);
   });

@@ -10,6 +10,7 @@ import {
 } from "./structure";
 
 import * as userInterface from "./interface";
+import * as control from "./control";
 import "./style.css";
 
 const main = "here";
@@ -61,9 +62,13 @@ const newProjectForm = document.querySelector(".project-form");
 newProjectButton.addEventListener("click", () => {
   newProjectForm.classList.toggle("hidden");
 });
+let currentProject = -1;
 
+export function setCurrentProject(projectIndex) {
+  currentProject = projectIndex;
+}
 function buildProject() {
-  userInterface.displayProjects(getProjectNames());
+  userInterface.displayProjects(getProjectNames(), userInterface.showProject);
   userInterface.displayTodos(getAllTodos());
 }
 
