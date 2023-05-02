@@ -6,10 +6,10 @@ function showProject(e) {
   );
 
   allCards.forEach((card) => {
-    card.style.display = "none";
+    card.classList.add("hidden");
   });
   projectCards.forEach((card) => {
-    card.style.display = "block";
+    card.classList.remove("hidden");
   });
   console.log(projectCards);
 }
