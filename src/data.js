@@ -49,6 +49,10 @@ function addProject(projectName) {
   projects.push(projectFactory(projectName, projects.length));
 }
 
+function getProjectsLength() {
+  return projects.length;
+}
+
 const countProjects = function countNonEmptyProjects() {
   return projects.filter((project) => !!project).length;
 };
@@ -84,6 +88,7 @@ export {
   getAllTodos,
   getProjectNames,
   countProjects,
+  getProjectsLength,
 };
 
 // function getProjectTodos(index) {

@@ -7,7 +7,8 @@ import {
   getAllTodos,
   getProjectNames,
   countProjects,
-} from "./structure";
+  getProjectsLength,
+} from "./data";
 
 import * as userInterface from "./interface";
 import * as control from "./control";
@@ -78,6 +79,9 @@ newProjectForm.addEventListener("submit", (e) => {
   const projectName = [...data.entries()][0][1];
   addProject(projectName);
   buildProject();
+  control.showProject({
+    target: { dataset: { projectIndex: getProjectsLength(-1) } },
+  });
   newProjectForm.reset();
   newProjectForm.classList.toggle("hidden");
 });
