@@ -8,6 +8,7 @@ import {
   getProjectNames,
   countProjects,
   getProjectsLength,
+  addProjectTodo,
 } from "./data";
 
 import * as userInterface from "./interface";
@@ -99,4 +100,15 @@ window.onclick = (event) => {
     modal.style.display = "none";
   }
 };
+
+const newTodoForm = document.querySelector(".todo-form");
+newTodoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const values = Object.fromEntries(data.entries());
+  const currentProject = control.getCurrentProject();
+  addProjectTodo(currentProject, values);
+  buildProject();
+});
+
 buildProject();

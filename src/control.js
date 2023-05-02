@@ -5,6 +5,10 @@ export function setCurrentProject(projectIndex) {
   currentDisplayedProject = projectIndex;
 }
 
+export function getCurrentProject() {
+  return currentDisplayedProject;
+}
+
 export function showProject(e) {
   const { projectIndex } = e.target.dataset;
   const allCards = document.querySelectorAll(".card");

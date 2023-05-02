@@ -7,16 +7,16 @@ function todoFactory({
   priority,
   projectIndex,
   todoIndex,
+  done = false,
 }) {
-  const done = false;
   return {
     title,
     description,
     dueDate,
     priority,
-    done,
     projectIndex,
     todoIndex,
+    done,
   };
 }
 
@@ -76,6 +76,10 @@ function getAllTodos() {
   });
   return allTodos;
 }
+
+function addProjectTodo(projectIndex, values) {
+  projects[projectIndex].addTodo(values);
+}
 // add the default project
 addProject("default");
 
@@ -89,6 +93,7 @@ export {
   getProjectNames,
   countProjects,
   getProjectsLength,
+  addProjectTodo,
 };
 
 // function getProjectTodos(index) {
