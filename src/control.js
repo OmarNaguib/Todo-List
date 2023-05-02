@@ -1,4 +1,6 @@
 // store the state of the project and functions that affect it
+let currentDisplayedProject = -1;
+
 export function showProject(e) {
   const { projectIndex } = e.target.dataset;
   const allCards = document.querySelectorAll(".card");
@@ -12,5 +14,5 @@ export function showProject(e) {
   projectCards.forEach((card) => {
     card.classList.remove("hidden");
   });
-  console.log(projectCards);
+  currentDisplayedProject = projectIndex;
 }

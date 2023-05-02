@@ -68,7 +68,7 @@ export function setCurrentProject(projectIndex) {
   currentProject = projectIndex;
 }
 function buildProject() {
-  userInterface.displayProjects(getProjectNames(), userInterface.showProject);
+  userInterface.displayProjects(getProjectNames(), control.showProject);
   userInterface.displayTodos(getAllTodos());
 }
 
