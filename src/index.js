@@ -62,8 +62,9 @@ console.log(countProjects());
 // beggining of real logic
 function refreshDisplay() {
   userInterface.reset();
-  userInterface.displayProjects(getProjectNames(), control.showProject);
+
   userInterface.displayTodos(getAllTodos(), deleteProjectTodo, editProjectTodo);
+  userInterface.displayProjects(getProjectNames(), control.showProject);
 }
 
 const allProjectsButton = document.querySelector(".all-projects");
@@ -99,27 +100,38 @@ const newTodoForm = document.querySelector(".todo-form");
 newTodoButton.onclick = () => {
   modal.style.display = "grid";
 };
-
+function closeForm() {
+  newTodoForm.reset();
+  delete newTodoForm.dataset.projectIndex;
+  delete newTodoForm.dataset.todoIndex;
+  modal.style.display = "none";
+}
 window.onclick = (event) => {
   if (event.target === modal) {
-    modal.style.display = "none";
-    newTodoForm.reset();
+    closeForm();
   }
 };
 
 closeModalButton.onclick = () => {
-  modal.style.display = "none";
-  newTodoForm.reset();
+  closeForm();
 };
 
 newTodoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = new FormData(e.target);
   const values = Object.fromEntries(data.entries());
-  let currentProject = control.getCurrentProject();
-  currentProject = currentProject === -1 ? 0 : currentProject;
-  addProjectTodo(currentProject, values);
+  const form = e.target;
+
+  if (form.dataset.projectIndex) {
+    console.log(form.dataset, values);
+    editProjectTodo(form.dataset.projectIndex, form.dataset.todoIndex, values);
+  } else {
+    let currentProject = control.getCurrentProject();
+    currentProject = currentProject === -1 ? 0 : currentProject;
+    addProjectTodo(currentProject, values);
+  }
   refreshDisplay();
+  closeForm();
 });
 
 // Loading the app
