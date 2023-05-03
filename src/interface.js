@@ -1,3 +1,20 @@
+const modal = document.querySelector("#myModal");
+const newTodoButton = document.querySelector(".new-todo");
+const todoForm = document.querySelector(".todo-form");
+
+function populateForm(todo) {
+  const inputFields = todoForm.querySelectorAll("input");
+  const priorityField = todoForm.querySelector("select");
+  inputFields[0].value = todo.children[0].textContent;
+  inputFields[1].value = todo.children[1].textContent;
+  inputFields[2].value = todo.dataset.description;
+  inputFields[3].checked = todo.dataset.done;
+  priorityField.value = todo.dataset.priority;
+
+  todoForm.dataset.projectIndex = todo.dataset.projectIndex;
+  todoForm.dataset.todoIndex = todo.dataset.todoIndex;
+}
+
 export function displayProjects(nameList, buttonHandler) {
   const projectNav = document.querySelector(".projects");
   nameList.forEach((name, index) => {
@@ -13,7 +30,7 @@ export function displayProjects(nameList, buttonHandler) {
   });
 }
 
-export function displayTodos(todoList, deleteProjectTodo, refreshDisplay) {
+export function displayTodos(todoList, deleteProjectTodo, editProjectTodo) {
   const container = document.querySelector(".todo-container");
   todoList.forEach((todo) => {
     const card = document.createElement("div");
@@ -21,6 +38,8 @@ export function displayTodos(todoList, deleteProjectTodo, refreshDisplay) {
     card.dataset.priority = todo.priority;
     card.dataset.projectIndex = todo.projectIndex;
     card.dataset.todoIndex = todo.todoIndex;
+    card.dataset.description = todo.description;
+    card.dataset.done = todo.done;
 
     const title = document.createElement("div");
     title.textContent = todo.title;
@@ -31,6 +50,10 @@ export function displayTodos(todoList, deleteProjectTodo, refreshDisplay) {
     const editButton = document.createElement("button");
     editButton.classList.add("edit");
     editButton.textContent = "edit";
+    editButton.addEventListener("click", (e) => {
+      newTodoButton.click();
+      populateForm(e.target.parentNode);
+    });
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete");

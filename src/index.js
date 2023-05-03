@@ -10,6 +10,7 @@ import {
   getProjectsLength,
   addProjectTodo,
   deleteProjectTodo,
+  editProjectTodo,
 } from "./data";
 
 import * as userInterface from "./interface";
@@ -62,13 +63,13 @@ console.log(countProjects());
 function refreshDisplay() {
   userInterface.reset();
   userInterface.displayProjects(getProjectNames(), control.showProject);
-  console.log(userInterface.displayTodos, getAllTodos, deleteProjectTodo);
-  userInterface.displayTodos(getAllTodos(), deleteProjectTodo, refreshDisplay);
+  userInterface.displayTodos(getAllTodos(), deleteProjectTodo, editProjectTodo);
 }
 
 const allProjectsButton = document.querySelector(".all-projects");
 allProjectsButton.addEventListener("click", control.showAll);
 
+// controls for adding a new project
 const newProjectButton = document.querySelector(".new-project");
 const newProjectForm = document.querySelector(".project-form");
 
@@ -89,9 +90,11 @@ newProjectForm.addEventListener("submit", (e) => {
   newProjectForm.classList.toggle("hidden");
 });
 
+// controls for adding a new Todo
 const modal = document.querySelector("#myModal");
 const newTodoButton = document.querySelector(".new-todo");
 const closeModalButton = document.querySelector(".close");
+const newTodoForm = document.querySelector(".todo-form");
 
 newTodoButton.onclick = () => {
   modal.style.display = "grid";
@@ -100,14 +103,14 @@ newTodoButton.onclick = () => {
 window.onclick = (event) => {
   if (event.target === modal) {
     modal.style.display = "none";
+    newTodoForm.reset();
   }
 };
 
 closeModalButton.onclick = () => {
   modal.style.display = "none";
+  newTodoForm.reset();
 };
-
-const newTodoForm = document.querySelector(".todo-form");
 
 newTodoForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -119,4 +122,5 @@ newTodoForm.addEventListener("submit", (e) => {
   refreshDisplay();
 });
 
+// Loading the app
 refreshDisplay();
