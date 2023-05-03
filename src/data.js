@@ -80,6 +80,10 @@ function getAllTodos() {
 function addProjectTodo(projectIndex, values) {
   projects[projectIndex].addTodo(values);
 }
+
+function deleteProjectTodo(projectIndex, todoIndex) {
+  projects[projectIndex].removeTodo(todoIndex);
+}
 // add the default project
 addProject("default");
 
@@ -94,6 +98,7 @@ export {
   countProjects,
   getProjectsLength,
   addProjectTodo,
+  deleteProjectTodo,
 };
 
 // function getProjectTodos(index) {

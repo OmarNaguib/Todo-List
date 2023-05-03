@@ -13,7 +13,7 @@ export function displayProjects(nameList, buttonHandler) {
   });
 }
 
-export function displayTodos(todoList) {
+export function displayTodos(todoList, deleteProjectTodo, refreshDisplay) {
   const container = document.querySelector(".todo-container");
   todoList.forEach((todo) => {
     const card = document.createElement("div");
@@ -28,12 +28,23 @@ export function displayTodos(todoList) {
     const dueDate = document.createElement("div");
     dueDate.textContent = todo.dueDate;
 
-    const description = document.createElement("div");
-    description.textContent = todo.description;
+    const editButton = document.createElement("button");
+    editButton.classList.add("edit");
+    editButton.textContent = "edit";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete");
+    deleteButton.textContent = "delete";
+    deleteButton.addEventListener("click", (e) => {
+      const { projectIndex, todoIndex } = e.target.parentNode.dataset;
+      deleteProjectTodo(projectIndex, todoIndex);
+      e.target.parentNode.remove();
+    });
 
     card.appendChild(title);
     card.appendChild(dueDate);
-    card.appendChild(description);
+    card.appendChild(editButton);
+    card.appendChild(deleteButton);
 
     container.appendChild(card);
   });
@@ -45,3 +56,6 @@ export function reset() {
   projectNav.innerHTML = "";
   container.innerHTML = "";
 }
+
+// const description = document.createElement("div");
+// description.textContent = todo.description;

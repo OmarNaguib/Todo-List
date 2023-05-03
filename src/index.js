@@ -9,6 +9,7 @@ import {
   countProjects,
   getProjectsLength,
   addProjectTodo,
+  deleteProjectTodo,
 } from "./data";
 
 import * as userInterface from "./interface";
@@ -58,10 +59,11 @@ console.log(countProjects());
 console.log(countProjects());
 
 // beggining of real logic
-function buildProject() {
+function refreshDisplay() {
   userInterface.reset();
   userInterface.displayProjects(getProjectNames(), control.showProject);
-  userInterface.displayTodos(getAllTodos());
+  console.log(userInterface.displayTodos, getAllTodos, deleteProjectTodo);
+  userInterface.displayTodos(getAllTodos(), deleteProjectTodo, refreshDisplay);
 }
 
 const allProjectsButton = document.querySelector(".all-projects");
@@ -79,7 +81,7 @@ newProjectForm.addEventListener("submit", (e) => {
   const data = new FormData(e.target);
   const projectName = [...data.entries()][0][1];
   addProject(projectName);
-  buildProject();
+  refreshDisplay();
   control.showProject({
     target: { dataset: { projectIndex: getProjectsLength(-1) } },
   });
@@ -101,14 +103,20 @@ window.onclick = (event) => {
   }
 };
 
+closeModalButton.onclick = () => {
+  modal.style.display = "none";
+};
+
 const newTodoForm = document.querySelector(".todo-form");
+
 newTodoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = new FormData(e.target);
   const values = Object.fromEntries(data.entries());
-  const currentProject = control.getCurrentProject();
+  let currentProject = control.getCurrentProject();
+  currentProject = currentProject === -1 ? 0 : currentProject;
   addProjectTodo(currentProject, values);
-  buildProject();
+  refreshDisplay();
 });
 
-buildProject();
+refreshDisplay();
