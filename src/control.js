@@ -25,16 +25,20 @@ export function showProject(e) {
   setCurrentProject(projectIndex);
 }
 
-export function showCurrentProject() {
-  showProject({
-    target: { dataset: { projectIndex: currentDisplayedProject } },
-  });
-}
-
 export function showAll() {
   const allCards = document.querySelectorAll(".card");
   allCards.forEach((card) => {
     card.classList.remove("hidden");
   });
   setCurrentProject(-1);
+}
+
+export function showCurrentProject() {
+  if (currentDisplayedProject === -1) {
+    showAll();
+  } else {
+    showProject({
+      target: { dataset: { projectIndex: currentDisplayedProject } },
+    });
+  }
 }

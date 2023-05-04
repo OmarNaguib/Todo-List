@@ -65,6 +65,7 @@ function refreshDisplay() {
 
   userInterface.displayTodos(getAllTodos(), deleteProjectTodo, editProjectTodo);
   userInterface.displayProjects(getProjectNames(), control.showProject);
+  control.showCurrentProject();
 }
 
 const allProjectsButton = document.querySelector(".all-projects");
@@ -83,12 +84,8 @@ newProjectForm.addEventListener("submit", (e) => {
   const data = new FormData(e.target);
   const projectName = [...data.entries()][0][1];
   addProject(projectName);
-  refreshDisplay();
-  // control.showProject({
-  //   target: { dataset: { projectIndex: getProjectsLength() - 1 } },
-  // });
   control.setCurrentProject(getProjectsLength() - 1);
-  control.showCurrentProject();
+  refreshDisplay();
   newProjectForm.reset();
   newProjectForm.classList.toggle("hidden");
 });
