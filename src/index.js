@@ -84,9 +84,11 @@ newProjectForm.addEventListener("submit", (e) => {
   const projectName = [...data.entries()][0][1];
   addProject(projectName);
   refreshDisplay();
-  control.showProject({
-    target: { dataset: { projectIndex: getProjectsLength() - 1 } },
-  });
+  // control.showProject({
+  //   target: { dataset: { projectIndex: getProjectsLength() - 1 } },
+  // });
+  control.setCurrentProject(getProjectsLength() - 1);
+  control.showCurrentProject();
   newProjectForm.reset();
   newProjectForm.classList.toggle("hidden");
 });

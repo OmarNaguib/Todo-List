@@ -27,7 +27,7 @@ export function showProject(e) {
 
 export function showCurrentProject() {
   showProject({
-    target: { dataset: { projectIndex: getCurrentProject } },
+    target: { dataset: { projectIndex: currentDisplayedProject } },
   });
 }
 
