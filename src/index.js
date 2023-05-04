@@ -85,7 +85,7 @@ newProjectForm.addEventListener("submit", (e) => {
   addProject(projectName);
   refreshDisplay();
   control.showProject({
-    target: { dataset: { projectIndex: getProjectsLength(-1) } },
+    target: { dataset: { projectIndex: getProjectsLength() - 1 } },
   });
   newProjectForm.reset();
   newProjectForm.classList.toggle("hidden");
