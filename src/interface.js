@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from "date-fns";
+
 const modal = document.querySelector("#myModal");
 const newTodoButton = document.querySelector(".new-todo");
 const todoForm = document.querySelector(".todo-form");
@@ -41,12 +43,13 @@ export function displayTodos(todoList, deleteProjectTodo, editProjectTodo) {
     card.dataset.todoIndex = todo.todoIndex;
     card.dataset.description = todo.description;
     card.dataset.done = todo.done;
+    card.dataset.dueDate = todo.dueDate;
 
     const title = document.createElement("div");
     title.textContent = todo.title;
 
     const dueDate = document.createElement("div");
-    dueDate.textContent = todo.dueDate;
+    dueDate.textContent = formatDistanceToNow(new Date(todo.dueDate));
 
     const editButton = document.createElement("button");
     editButton.classList.add("edit");
