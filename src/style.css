@@ -1,7 +1,19 @@
+/* resetting */
 html,
 body {
   min-height: 100vh;
   margin: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+}
+
+header {
+  color: white;
+  padding-left: 30px;
+  display: grid;
+  align-items: center;
 }
 body {
   display: grid;
@@ -14,7 +26,25 @@ header {
 }
 nav {
   background-color: grey;
+  padding-top: 50px;
+
+  display: flex;
+  flex-direction: column;
 }
+
+nav ul,
+nav li {
+  display: contents;
+}
+
+nav form {
+  display: flex;
+}
+
+nav input {
+  width: 165px;
+}
+
 main {
   grid-column: 2 / 3;
   background-color: brown;
