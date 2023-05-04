@@ -8,7 +8,8 @@ function populateForm(todo) {
   inputFields[0].value = todo.children[0].textContent;
   inputFields[1].value = todo.children[1].textContent;
   inputFields[2].value = todo.dataset.description;
-  inputFields[3].checked = todo.dataset.done;
+  console.log(inputFields[3].checked);
+  inputFields[3].checked = todo.dataset.done === "on";
   priorityField.value = todo.dataset.priority;
 
   todoForm.dataset.projectIndex = todo.dataset.projectIndex;

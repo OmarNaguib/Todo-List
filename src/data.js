@@ -85,7 +85,11 @@ function deleteProjectTodo(projectIndex, todoIndex) {
   projects[projectIndex].removeTodo(todoIndex);
 }
 function editProjectTodo(projectIndex, todoIndex, newValues) {
-  projects[projectIndex].editTodo(todoIndex, newValues);
+  projects[projectIndex].editTodo(todoIndex, {
+    projectIndex,
+    todoIndex,
+    ...newValues,
+  });
 }
 // add the default project
 addProject("default");
