@@ -46,6 +46,7 @@ nav {
   align-items: end;
   padding-right: 10px;
   gap: 5px;
+  box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 nav ul,
@@ -92,6 +93,7 @@ main {
   align-items: center;
   gap: 50px;
   padding: 50px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 main > button {
@@ -171,7 +173,50 @@ main > button {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  height: 500px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 75px;
+  gap: 15px;
+  padding-left: 20px;
+}
+.modal form > div {
+  display: flex;
+  margin-top: 5px;
+}
+
+.modal form label {
+  width: 150px;
+  font-size: 1.4rem;
+  color: var(black);
+}
+.modal form input {
+  font-size: 1.4rem;
+  border-radius: 5px;
+  width: 300px;
+}
+.modal form input[type="checkbox"] {
+  height: 23px;
+  width: 23px;
+}
+
+.modal select {
+  height: 25px;
+  font: inherit;
+}
+
+.modal form button {
+  width: 40%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--color-cyan-500);
+  margin: 5px auto;
 }
 
 .close {
