@@ -10,8 +10,14 @@ function populateForm(todo) {
   inputFields[0].value = todo.children[0].textContent;
   inputFields[1].value = todo.dataset.dueDate;
   inputFields[2].value = todo.dataset.description;
-  console.log(inputFields[3].checked);
-  inputFields[3].checked = todo.dataset.done;
+  console.log(inputFields[3].checked, "here");
+  console.log(todo.dataset.done);
+  console.log(todo.dataset.done);
+  if (todo.dataset.done) {
+    console.log("sgwhkjsfhjklg");
+  }
+  inputFields[3].checked = !!(todo.dataset.done === "true");
+  console.log(inputFields[3].checked, "there");
   priorityField.value = todo.dataset.priority;
 
   todoForm.dataset.projectIndex = todo.dataset.projectIndex;
