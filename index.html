@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/26ba2a01ee.js" crossorigin="anonymous"></script>
+    <title>Todo This</title>
+  </head>
+  <body>
+    <header>
+      <h1>Todo This</h1>
+    </header>
+    <nav>
+      <button data-project-index="-1" class="all-projects"><i class="fa-sharp fa-solid fa-house"></i>All projects</button>
+      <ul class="projects"></ul>
+      <form class="project-form hidden">
+        <input type="text" name="project-name" /><button>Add</button>
+      </form>
+      <button class="new-project">+new project</button>
+
+    </nav>
+    <main>
+      <button class="new-todo">New Task</button>
+      <div class="todo-container"></div>
+
+      </div>
+    </main>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form action="" class="todo-form">
+          <div class="input-container">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" >
+          </div>
+          <div class="input-container">
+            <label for="due-date">Due Date</label>
+            <input type="datetime-local" name="dueDate" id="due-date" >
+          </div>
+          <div class="input-container">
+            <label for="description">description</label>
+            <input type="text" name="description" id="description">
+          </div>
+          <div class="input-container">
+            <label for="priority">Priority</label>
+            <select  name = "priority" id="priority">
+              <option value="normal" selected>normal</option>
+              <option value="urgent" >urgent</option>
+            </select>
+          </div>
+          <div class="input-container">
+            <label for="done">Finished?</label>
+            <input type="checkbox" name="done" id="done">
+          </div>
+          <button>Done</button>
+        </form>
+
+      </div>
+  </body>
+</html>
