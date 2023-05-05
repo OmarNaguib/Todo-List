@@ -123,13 +123,10 @@ if (!localStorage.projects && isEmpty) {
 }
 
 export {
-  todoFactory,
-  projectFactory,
   addProject,
   removeProject,
   getAllTodos,
   getProjectNames,
-  countProjects,
   getProjectsLength,
   addProjectTodo,
   deleteProjectTodo,
