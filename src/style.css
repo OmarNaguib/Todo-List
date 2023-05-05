@@ -9,6 +9,13 @@ ul {
   margin: 0;
 }
 
+:root {
+  font-family: "Roboto Slab", serif;
+}
+body button {
+  font: inherit;
+}
+
 header {
   color: white;
   padding-left: 30px;
