@@ -109,7 +109,9 @@ function restoreData() {
     Object.keys(storedProjects).forEach((key, index) => {
       addProject(key);
       storedProjects[key].forEach((todo) => {
-        projects[index].addTodo(todo);
+        if (todo) {
+          projects[index].addTodo(todo);
+        }
       });
     });
   }

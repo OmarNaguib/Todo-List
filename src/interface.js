@@ -8,10 +8,10 @@ function populateForm(todo) {
   const inputFields = todoForm.querySelectorAll("input");
   const priorityField = todoForm.querySelector("select");
   inputFields[0].value = todo.children[0].textContent;
-  inputFields[1].value = todo.children[1].textContent;
+  inputFields[1].value = todo.dataset.dueDate;
   inputFields[2].value = todo.dataset.description;
   console.log(inputFields[3].checked);
-  inputFields[3].checked = todo.dataset.done === "on";
+  inputFields[3].checked = todo.dataset.done;
   priorityField.value = todo.dataset.priority;
 
   todoForm.dataset.projectIndex = todo.dataset.projectIndex;
@@ -33,7 +33,12 @@ export function displayProjects(nameList, buttonHandler) {
   });
 }
 
-export function displayTodos(todoList, deleteProjectTodo, editProjectTodo) {
+export function displayTodos(
+  todoList,
+  deleteProjectTodo,
+  editProjectTodo,
+  storeData
+) {
   const container = document.querySelector(".todo-container");
   todoList.forEach((todo) => {
     const card = document.createElement("div");
@@ -49,6 +54,7 @@ export function displayTodos(todoList, deleteProjectTodo, editProjectTodo) {
     title.textContent = todo.title;
 
     const dueDate = document.createElement("div");
+    console.log(todo.dueDate);
     dueDate.textContent = formatDistanceToNow(new Date(todo.dueDate));
 
     const editButton = document.createElement("button");
@@ -66,6 +72,7 @@ export function displayTodos(todoList, deleteProjectTodo, editProjectTodo) {
       const { projectIndex, todoIndex } = e.target.parentNode.dataset;
       deleteProjectTodo(projectIndex, todoIndex);
       e.target.parentNode.remove();
+      storeData();
     });
 
     card.appendChild(title);

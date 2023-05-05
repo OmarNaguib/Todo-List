@@ -63,7 +63,12 @@ import "./style.css";
 // beggining of real logic
 function refreshDisplay() {
   userInterface.reset();
-  userInterface.displayTodos(getAllTodos(), deleteProjectTodo, editProjectTodo);
+  userInterface.displayTodos(
+    getAllTodos(),
+    deleteProjectTodo,
+    editProjectTodo,
+    storeData
+  );
   userInterface.displayProjects(getProjectNames(), control.showProject);
   control.showCurrentProject();
   storeData();
@@ -120,6 +125,8 @@ newTodoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = new FormData(e.target);
   const values = Object.fromEntries(data.entries());
+  values.done = values.done === "on";
+  console.log(values);
   const form = e.target;
 
   if (form.dataset.projectIndex) {
