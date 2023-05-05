@@ -61,7 +61,9 @@ export function displayTodos(
 
     const dueDate = document.createElement("div");
     console.log(todo.dueDate);
-    dueDate.textContent = formatDistanceToNow(new Date(todo.dueDate));
+    dueDate.textContent = formatDistanceToNow(new Date(todo.dueDate), {
+      addSuffix: true,
+    });
 
     const editButton = document.createElement("button");
     editButton.classList.add("edit");
