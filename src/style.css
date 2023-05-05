@@ -138,6 +138,16 @@ main > button {
 }
 .card > button {
   width: 75px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.card button:nth-of-type(1) {
+  background-color: var(--color-cyan-500);
+}
+.card button:nth-of-type() {
+  background-color: var(--color-red-400);
 }
 .hidden {
   display: none;
