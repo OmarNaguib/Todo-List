@@ -1,5 +1,4 @@
 import {
-  projects,
   todoFactory,
   projectFactory,
   addProject,
@@ -11,6 +10,8 @@ import {
   addProjectTodo,
   deleteProjectTodo,
   editProjectTodo,
+  storeData,
+  restoreData,
 } from "./data";
 
 import * as userInterface from "./interface";
@@ -62,10 +63,10 @@ import "./style.css";
 // beggining of real logic
 function refreshDisplay() {
   userInterface.reset();
-
   userInterface.displayTodos(getAllTodos(), deleteProjectTodo, editProjectTodo);
   userInterface.displayProjects(getProjectNames(), control.showProject);
   control.showCurrentProject();
+  storeData();
 }
 
 const allProjectsButton = document.querySelector(".all-projects");
@@ -129,10 +130,12 @@ newTodoForm.addEventListener("submit", (e) => {
     currentProject = currentProject === -1 ? 0 : currentProject;
     addProjectTodo(currentProject, values);
   }
-  console.log(projects);
   refreshDisplay();
   closeForm();
 });
 
 // Loading the app
-refreshDisplay();
+window.addEventListener("load", () => {
+  restoreData();
+  refreshDisplay();
+});

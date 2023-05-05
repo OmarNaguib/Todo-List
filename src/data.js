@@ -21,7 +21,8 @@ function todoFactory({
 }
 
 function projectFactory(projectName, projectIndex) {
-  const todos = [];
+  // eslint-disable-next-line prefer-const
+  let todos = [];
   function addTodo(values) {
     const todoIndex = todos.length;
     todos.push(todoFactory({ ...values, projectIndex, todoIndex }));
@@ -91,11 +92,35 @@ function editProjectTodo(projectIndex, todoIndex, newValues) {
     ...newValues,
   });
 }
+
+// Code for Local Storage
+
+function storeData() {
+  const storageObject = {};
+  projects.forEach((project) => {
+    storageObject[project.projectName] = project.todos;
+  });
+  localStorage.setItem("projects", JSON.stringify(storageObject));
+}
+const isEmpty = projects.length === 0;
+function restoreData() {
+  if (localStorage.projects && isEmpty) {
+    const storedProjects = JSON.parse(localStorage.projects);
+    Object.keys(storedProjects).forEach((key, index) => {
+      addProject(key);
+      storedProjects[key].forEach((todo) => {
+        projects[index].addTodo(todo);
+      });
+    });
+  }
+}
+
 // add the default project
-addProject("default");
+if (!localStorage.projects && isEmpty) {
+  addProject("default");
+}
 
 export {
-  projects,
   todoFactory,
   projectFactory,
   addProject,
@@ -107,6 +132,8 @@ export {
   addProjectTodo,
   deleteProjectTodo,
   editProjectTodo,
+  storeData,
+  restoreData,
 };
 
 // function getProjectTodos(index) {
