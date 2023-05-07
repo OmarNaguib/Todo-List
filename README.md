@@ -2,7 +2,7 @@
 
 This is meant to be a big **consolidating** project for all techniques and concepts this far.
 
-Main focuses:
+### Main focuses:
 
 **Object Oriented Code Organization** using ES6 Modules and Factory Functions.
 
@@ -11,7 +11,7 @@ A focus on the **Single Responsibility Principle**, by seperating different code
 Utilizing before practised techniques for layout, style, and code logic.
 
 
-new techniques used:
+### New techniques used:
 
 Building a modal for an interactive form display.
 
