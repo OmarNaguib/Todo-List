@@ -83,6 +83,10 @@ nav form button {
 }
 nav .all-projects {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 main {
   grid-column: 2 / 3;
