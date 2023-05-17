@@ -198,7 +198,7 @@ main > button {
   color: var(black);
 }
 .modal form input {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   border-radius: 5px;
   width: 300px;
 }
