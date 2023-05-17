@@ -105,6 +105,7 @@ main > button {
 .new-todo {
   height: 30px;
   width: 100px;
+  font-size: 16px;
 }
 .todo-container {
   display: grid;
